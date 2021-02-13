@@ -50,4 +50,15 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
+
+  /** 상세정보시 확인시 등록된 ID로 data 읽어오기 */
+  /* 
+     hero[]와 달리 ID는 unique이기때문에 배열[]을 쓰지 않는다. */
+  getHero(id: number): Observable<Hero> {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(() => this.log(`가져온 hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }
 }
