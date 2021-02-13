@@ -9,12 +9,14 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     MessagesComponent,
     HeroDetailComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

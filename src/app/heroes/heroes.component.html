@@ -1,5 +1,9 @@
 <h2>My Heroes</h2>
 
+<!-- 검색기능 -->
+<app-search></app-search>
+
+<!-- 리스트 -->
 <ul class="heroes">
   <li *ngFor="let hero of heroesArray">
     <a routerLink="/detail/{{ hero.id }}">
@@ -8,3 +12,13 @@
     <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
   </li>
 </ul>
+
+<!-- 목록 추가하기 -->
+<div>
+  <label
+    >목록 추가:
+    <input #heroName />
+  </label>
+  <!-- heroName.value = '' 추가하지않으면 입력했던 값이 계속 남아버림 -->
+  <button (click)="add(heroName.value); heroName.value = ''">add</button>
+</div>

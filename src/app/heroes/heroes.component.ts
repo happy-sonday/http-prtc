@@ -1,3 +1,4 @@
+import { AUTO_STYLE } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
@@ -37,5 +38,20 @@ export class HeroesComponent implements OnInit {
     //이것이 deleteHero() 실행 후 목록을 불러올때 변경된 herosArray로 리스트로 view에 노출된게된다.
     this.heroesArray = this.heroesArray.filter((h) => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
+  }
+
+  /**
+   * 목록 추가하기
+   */
+  add(name: string): void {
+    name = name.trim(); //공백제거
+    if (!name) {
+      alert('이름을 입력해주세요!');
+
+      return;
+    }
+    this.heroService.addHero({ name } as Hero).subscribe((hero) => {
+      this.heroesArray.push(hero);
+    });
   }
 }
