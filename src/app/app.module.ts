@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { HeroesComponent } from './heroes/heroes.component';
+import { MessagesComponent } from './messages/messages.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeroesComponent, MessagesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
