@@ -20,7 +20,7 @@ export class HeroService {
   /* 제네릭 타입은 필수이며 any로 설정해도 되지만 컴파일시 발생하는 에러를 줄일 수 있다. */
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap((_) => this.log('fetched heroes'))
+      tap((_) => this.log('heroes 리스트 가져오기 '))
       //catchError(this.handleError<Hero[]>('getHeroes', []))
     );
   }
@@ -57,8 +57,19 @@ export class HeroService {
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
-      tap(() => this.log(`가져온 hero id=${id}`)),
+      tap(() => this.log(`hero 상세보기  id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
+  updateHero(hero: Hero): Observable<any> {
+    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap((_) => this.log(`정보 수정 id=${hero.id}`)),
+      catchError(this.handleError<any>('updateHero'))
     );
   }
 }

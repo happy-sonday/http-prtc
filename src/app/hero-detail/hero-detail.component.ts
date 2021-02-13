@@ -28,4 +28,12 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  /**
+   *상세정보 수정하기   *
+   * @memberof HeroDetailComponent
+   */
+  update(): void {
+    this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+  }
 }
