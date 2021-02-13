@@ -66,10 +66,29 @@ export class HeroService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
+  /**
+   * 수정 메서드
+   *
+   */
   updateHero(hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
       tap((_) => this.log(`정보 수정 id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
+  /**
+   * 삭제  메서드
+   */
+  /** DELETE: delete the hero from the server */
+  deleteHero(hero: Hero): Observable<Hero> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const name = hero.name;
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete<Hero>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`삭제 ${name} id=${id}`)),
+      catchError(this.handleError<Hero>('deleteHero'))
     );
   }
 }
