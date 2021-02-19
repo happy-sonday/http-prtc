@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { SearchComponent } from './search/search.component';
     MessagesComponent,
     HeroDetailComponent,
     SearchComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
